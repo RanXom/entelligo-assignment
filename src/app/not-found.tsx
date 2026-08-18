@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
-const NotFound = () => {
+export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background p-6 overflow-hidden relative">
-      {/* random decorative blur blob to make it look expensive */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="bg-card p-8 rounded-[2rem] shadow-xl border border-border max-w-md w-full text-center space-y-6 relative z-10">
@@ -21,15 +20,16 @@ const NotFound = () => {
           </p>
         </div>
 
-        <Button
-          asChild
-          className="w-full rounded-[2rem] h-14 font-medium text-[15px] shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98]"
+        <Link
+          href="/"
+          className={buttonVariants({
+            className:
+              "w-full rounded-[2rem] h-14 font-medium text-[15px] shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98]",
+          })}
         >
-          <Link href="/">Take me back home fr</Link>
-        </Button>
+          Take me back home fr
+        </Link>
       </div>
     </div>
   );
-};
-
-export default NotFound;
+}
