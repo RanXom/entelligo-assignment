@@ -12,6 +12,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useState } from "react";
 import { UserDetails } from "./user-details";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const UserTable = ({ users }: { users: DummyUser[] }) => {
   const [selectedUser, setSelectedUser] = useState<DummyUser | null>(null);
@@ -43,7 +44,7 @@ export const UserTable = ({ users }: { users: DummyUser[] }) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {users.map((user, index) => (
+            {users.map((user) => (
               <TableRow
                 key={user.id}
                 onClick={() => setSelectedUser(user)}
@@ -86,19 +87,31 @@ export const UserTable = ({ users }: { users: DummyUser[] }) => {
         </Table>
       </div>
 
-      {selectedUser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div
-            className="absolute inset-0 bg-background/60 backdrop-blur-md cursor-pointer"
-            onClick={() => setSelectedUser(null)} // click outside to close
-            title="Click to close"
-          />
+      <AnimatePresence>
+        {selectedUser && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+              animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
+              exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 bg-background/60 cursor-pointer"
+              onClick={() => setSelectedUser(null)}
+              title="Click to close"
+            />
 
-          <div className="relative z-10 w-full max-w-[320px]">
-            <UserDetails user={selectedUser} />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ type: "spring", bounce: 0.4, duration: 0.5 }}
+              className="relative z-10 w-full max-w-[320px]"
+            >
+              <UserDetails user={selectedUser} />
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </>
   );
 };
