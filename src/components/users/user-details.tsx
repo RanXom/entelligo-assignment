@@ -22,6 +22,8 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
         <Image
           src={user.image}
           alt={user.firstName}
+          width={80}
+          height={80}
           className="w-20 h-20 rounded-full border-4 border-background object-cover bg-muted"
         />
       </div>
@@ -35,7 +37,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
         </p>
       </div>
 
-      <div className="bg-muted/50 rounded-2xl p-4 mb-4 flex justify-between items-center border border-border">
+      <div className="bg-muted/50 rounded-2xl p-4 mx-4 mb-4 flex justify-between items-center border border-border">
         <div className="flex flex-col items-center">
           <div className="flex items-center gap-1 mb-1">
             <span className="text-yellow-500 text-sm">⭐</span>
@@ -75,7 +77,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
         </div>
       </div>
 
-      <Button className="w-full rounded-2xl h-14 font-medium text-[15px] shadow-md">
+      <Button className="w-full rounded-[2rem] h-14 font-medium text-[15px] shadow-md">
         Get In Touch
       </Button>
     </div>
