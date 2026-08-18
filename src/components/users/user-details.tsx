@@ -56,7 +56,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
 
       <div className="bg-muted/50 rounded-2xl p-4 mx-4 mb-4 flex items-center border border-border">
         <div className="flex-1 flex flex-col items-center">
-          <span className="font-bold text-foreground text-sm">5.0</span>
+          <span className="font-bold text-foreground text-md">5.0</span>
           <span className="text-[10px] text-muted-foreground font-medium">
             Rating
           </span>
@@ -65,7 +65,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
         <div className="w-px h-8 bg-border"></div>
 
         <div className="flex-1 flex flex-col items-center">
-          <span className="font-bold text-foreground text-sm">{user.age}</span>
+          <span className="font-bold text-foreground text-md">{user.age}</span>
           <span className="text-[10px] text-muted-foreground font-medium">
             Years
           </span>
@@ -74,7 +74,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
         <div className="w-px h-8 bg-border"></div>
 
         <div className="flex-1 flex flex-col items-center">
-          <span className="font-bold text-foreground text-sm">
+          <span className="font-bold text-foreground text-md">
             {Math.round(user.height)}
           </span>
           <span className="text-[10px] text-muted-foreground font-medium">

@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-const LoadingDirectory = () => {
+export default function Loading() {
   return (
     <main className="min-h-screen bg-background">
       <div className="mx-auto max-w-300 px-4 sm:px-6 pt-10 sm:pt-20 pb-24">
@@ -45,6 +45,4 @@ const LoadingDirectory = () => {
       </div>
     </main>
   );
-};
-
-export default LoadingDirectory;
+}
