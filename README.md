@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# User Directory
+
+## Overview
+
+A modern, responsive User Directory application built with Next.js 15 (App Router), TypeScript, Tailwind CSS, and shadcn/ui. The project showcases robust client-side filtering, searching, sorting, and seamless modal user interactions, alongside an unhinged easter egg experience.
+
+## Tech Stack
+
+- Framework: Next.js 15+ (App Router)
+- Language: TypeScript
+- Styling: Tailwind CSS (v4/OKLCH theme)
+- UI Components: shadcn/ui & Base UI primitives
+- Animations: Framer Motion
+- Notifications: Sonner
+
+## Features
+
+- Dynamic Data Pipeline: Real-time client-side searching, role/blood group filtering, and multi-field sorting (name, age, ID).
+- Infinite Load More: Smooth expandable list behavior powered by Framer Motion layout transitions.
+- Interactive Modals: Glassmorphic profile cards with unique deterministic gradient backgrounds and a loading skeleton state.
+- Easter Egg Interaction: "Get in Touch" button triggers unhinged, general-audience randomized response toasts via Sonner.
+- Resilient UX: Custom route-level loading skeletons, error boundaries, and a custom 404 "not found" page.
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository and run it locally:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> Utilizes the public DummyJSON /users endpoint for fast, keyless, and stable user payloads.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Architecture
 
-## Learn More
+Structured for separation of concerns and clear data boundaries:
 
-To learn more about Next.js, take a look at the following resources:
+- src/app/: Next.js App Router pages, global error boundary, 404 page, and route loading skeletons.
+- src/components/: Modular UI primitives, table structures, and user card/modal views.
+- src/lib/: Centralized API clients and utility functions.
+- src/types/: Strict TypeScript interfaces for the user schema.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Error and Loading States
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Loading: Displays custom skeleton shimmer states for route loading and profile card inspection.
+- Error Boundaries: Gracefully handles network or API failures with a clean recovery retry UI.
+- Not Found: Intercepts missing or invalid routes with a dedicated 404 view.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> AI was leveraged as an engineering assistant for accelerating boilerplate code generation, implementing Framer Motion physics, and refining error-handling patterns.
