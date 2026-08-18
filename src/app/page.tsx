@@ -1,8 +1,10 @@
-export default function Home() {
-  return (
-    <div className="flex flex-col space-y-6 max-w-7xl max-auto pb-10">
-      <Header />
-      <UsersTable />
-    </div>
-  );
-}
+import { UserTable } from "@/components/users/user-table";
+import { getUsers } from "@/lib/api";
+
+const HomePage = async () => {
+  const { users } = await getUsers();
+
+  return <UserTable users={users} />;
+};
+
+export default HomePage;
