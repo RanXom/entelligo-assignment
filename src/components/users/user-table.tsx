@@ -22,6 +22,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "../ui/dropdown-menu";
+import { UserDetailsSkeleton } from "./user-details-skeleton";
 
 export const UserTable = ({
   initialUsers,
@@ -33,6 +34,7 @@ export const UserTable = ({
   const [users, setUsers] = useState<DummyUser[]>(initialUsers || []);
   const [selectedUser, setSelectedUser] = useState<DummyUser | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isModalLoading, setIsModalLoading] = useState(false);
 
   // controls state
   const [searchTerm, setSearchTerm] = useState("");
@@ -392,7 +394,14 @@ export const UserTable = ({
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       key={user.id}
-                      onClick={() => setSelectedUser(user)}
+                      onClick={() => {
+                        setSelectedUser(user);
+                        setIsModalLoading(true);
+                        // fake 300ms network delay
+                        setTimeout(() => {
+                          setIsModalLoading(false);
+                        }, 300);
+                      }}
                       className="border-b border-border transition-colors hover:bg-muted/50 cursor-pointer"
                     >
                       <TableCell className="text-center text-sm text-muted-foreground font-medium py-4 hidden sm:table-cell">
@@ -475,7 +484,11 @@ export const UserTable = ({
               transition={{ type: "spring", bounce: 0.4, duration: 0.5 }}
               className="relative z-10 w-full max-w-[320px]"
             >
-              <UserDetails user={selectedUser} />
+              {isModalLoading ? (
+                <UserDetailsSkeleton />
+              ) : (
+                <UserDetails user={selectedUser} />
+              )}
             </motion.div>
           </div>
         )}
