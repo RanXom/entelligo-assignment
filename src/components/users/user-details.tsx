@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const UserDetails = ({ user }: { user: DummyUser }) => {
   return (
-    <div className="w-80 bg-card rounded-[2rem] shadow-xl border border-border relative overflow-hidden">
+    <div className="w-full max-w-[320px] bg-card rounded-[2rem] p-4 shadow-xl border border-border relative overflow-hidden">
       <div className="h-32 rounded-3xl bg-linear-to-br from-amber-200 via-orange-400 to-blue-500 relative">
         <div className="absolute -bottom-4 right-4 bg-background px-4 py-1.5 rounded-full shadow-md flex items-center gap-2 border border-border">
           <div className="w-4 h-4 bg-destructive rounded-sm flex items-center justify-center">
@@ -37,8 +37,8 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
         </p>
       </div>
 
-      <div className="bg-muted/50 rounded-2xl p-4 mx-4 mb-4 flex justify-between items-center border border-border">
-        <div className="flex flex-col items-center">
+      <div className="bg-muted/50 rounded-2xl p-4 mx-4 mb-4 flex items-center border border-border">
+        <div className="flex-1 flex flex-col items-center">
           <span className="font-bold text-foreground text-sm">5.0</span>
           <span className="text-[10px] text-muted-foreground font-medium">
             Rating
@@ -47,7 +47,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
 
         <div className="w-px h-8 bg-border"></div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex-1 flex flex-col items-center">
           <span className="font-bold text-foreground text-sm">{user.age}</span>
           <span className="text-[10px] text-muted-foreground font-medium">
             Years
@@ -56,7 +56,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
 
         <div className="w-px h-8 bg-border"></div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex-1 flex flex-col items-center">
           <span className="font-bold text-foreground text-sm">
             {Math.round(user.height)}
           </span>
