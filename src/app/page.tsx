@@ -3,7 +3,7 @@ import { UserTable } from "@/components/users/user-table";
 import { getUsers } from "@/lib/api";
 
 const HomePage = async () => {
-  const { users } = await getUsers();
+  const { users, total } = await getUsers(0, 10);
 
   return (
     <main className="min-h-screen bg-background">
@@ -15,7 +15,7 @@ const HomePage = async () => {
           <div className="flex items-center justify-between">
             <ToggleGroup
               type="single"
-              defaultValue="1D"
+              defaultValue="ETH"
               className="bg-muted p-1 rounded-xl border border-border justify-start"
             >
               <ToggleGroupItem
@@ -47,7 +47,7 @@ const HomePage = async () => {
           </div>
         </div>
 
-        <UserTable users={users} />
+        <UserTable initialUsers={users} total={total} />
       </div>
     </main>
   );

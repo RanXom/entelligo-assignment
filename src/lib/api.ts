@@ -1,11 +1,14 @@
 import { DummyUser, UsersResponse } from "@/types/user";
 
-export async function getUsers(): Promise<UsersResponse> {
-  const res = await fetch("https://dummyjson.com/users?limit=10", {
-    next: {
-      revalidate: 3600,
+export async function getUsers(skip = 0, limit = 10): Promise<UsersResponse> {
+  const res = await fetch(
+    `https://dummyjson.com/users?limit=${limit}&skip=${skip}`,
+    {
+      next: {
+        revalidate: 3600,
+      },
     },
-  });
+  );
 
   if (!res.ok) throw new Error("network is cooked bro");
 
