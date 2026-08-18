@@ -2,10 +2,27 @@ import { DummyUser } from "@/types/user";
 import { Button } from "../ui/button";
 import Image from "next/image";
 
+const GRADIENTS = [
+  "from-amber-200 via-orange-400 to-blue-500",
+  "from-fuchsia-300 via-purple-500 to-indigo-600",
+  "from-emerald-300 via-teal-400 to-cyan-500",
+  "from-rose-300 via-pink-500 to-red-500",
+  "from-blue-300 via-indigo-500 to-violet-600",
+  "from-yellow-200 via-amber-400 to-orange-500",
+  "from-cyan-300 via-blue-500 to-purple-600",
+  "from-lime-300 via-green-400 to-emerald-600",
+];
+
 export const UserDetails = ({ user }: { user: DummyUser }) => {
+  // if user.id is 12 and we have 8 gradients, 12 % 8 = 4.
+  // it consistently maps any ID to a valid array index without breaking.
+  const gradientClass = GRADIENTS[user.id % GRADIENTS.length];
+
   return (
-    <div className="w-full max-w-[320px] bg-card rounded-[2rem] p-4 shadow-xl border border-border relative overflow-hidden">
-      <div className="h-32 rounded-3xl bg-linear-to-br from-amber-200 via-orange-400 to-blue-500 relative">
+    <div className="w-full max-w-80 bg-card rounded-[2rem] shadow-xl border border-border relative overflow-hidden">
+      <div
+        className={`h-32 rounded-3xl bg-linear-to-br ${gradientClass} relative`}
+      >
         <div className="absolute -bottom-4 right-4 bg-background px-4 py-1.5 rounded-full shadow-md flex items-center gap-2 border border-border">
           <div className="w-4 h-4 bg-destructive rounded-sm flex items-center justify-center">
             <span className="text-[10px] text-destructive-foreground font-bold">
