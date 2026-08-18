@@ -7,12 +7,12 @@ const HomePage = async () => {
 
   return (
     <main className="min-h-screen bg-background">
-      <div className="mx-auto max-w-[1200px] px-6 pt-20 pb-24">
+      <div className="mx-auto max-w-300 px-4 sm:px-6 pt-10 sm:pt-20 pb-24">
         <div className="flex flex-col gap-6 mb-6">
-          <h1 className="text-4xl font-semibold tracking-tight text-foreground">
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
             Trending Users
           </h1>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <ToggleGroup
               type="single"
               defaultValue="1D"
@@ -20,13 +20,13 @@ const HomePage = async () => {
             >
               <ToggleGroupItem
                 value="1D"
-                className="rounded-lg px-4 h-8 text-sm data-[state=on]:bg-background data-[state=on]:shadow-sm data-[state=on]:text-foreground text-muted-foreground font-medium"
+                className="flex-1 sm:flex-none rounded-lg px-4 h-8 text-sm data-[state=on]:bg-background data-[state=on]:shadow-sm data-[state=on]:text-foreground text-muted-foreground font-medium"
               >
                 1D
               </ToggleGroupItem>
               <ToggleGroupItem
                 value="1W"
-                className="rounded-lg px-4 h-8 text-sm data-[state=on]:bg-background data-[state=on]:shadow-sm data-[state=on]:text-foreground text-muted-foreground font-medium"
+                className="flex-1 sm:flex-none rounded-lg px-4 h-8 text-sm data-[state=on]:bg-background data-[state=on]:shadow-sm data-[state=on]:text-foreground text-muted-foreground font-medium"
               >
                 1W
               </ToggleGroupItem>
@@ -35,7 +35,7 @@ const HomePage = async () => {
             <ToggleGroup
               type="single"
               defaultValue="ETH"
-              className="bg-muted p-1 rounded-xl border border-border"
+              className="bg-muted p-1 rounded-xl border border-border w-full sm:w-auto hidden sm:flex"
             >
               <ToggleGroupItem
                 value="ETH"
