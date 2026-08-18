@@ -1,6 +1,7 @@
 import { DummyUser } from "@/types/user";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { toast } from "sonner";
 
 const GRADIENTS = [
   "from-amber-200 via-orange-400 to-blue-500",
@@ -13,10 +14,45 @@ const GRADIENTS = [
   "from-lime-300 via-green-400 to-emerald-600",
 ];
 
+const FUNNY_MESSAGES = [
+  "bro they are literally an NPC, they can't read your emails 💀",
+  "message sent straight to the void. hope they answer",
+  "user left you on read instantly. completely cooked.",
+  "bold of you to assume this button actually does something",
+  "connection failed: user is currently taking a power nap.",
+  "they saw your message and chose violence. blocked.",
+  "error 404: personality not found for this NPC.",
+  "carrier pigeon dispatched. expect a reply in 3-5 business years.",
+  "bro is busy touching grass, try again later.",
+  "your message was marked as spam by the matrix.",
+  "they are typing... and typing... and typing forever...",
+  "status: ghosted successfully",
+  "congratulations! you have successfully annoyed a digital stranger.",
+  "telepathic link failed. please try shouting at your screen instead.",
+  "user is currently ignoring all inbound transmissions.",
+  "signal lost in the sauce. try again never.",
+  "email received! ...just kidding, it got deleted instantly.",
+  "bro really thought they were gonna text back 😭",
+  "contacting the dummyjson servers... they said absolutely not.",
+  "maximum cringe level reached. closing connection.",
+];
+
 export const UserDetails = ({ user }: { user: DummyUser }) => {
-  // if user.id is 12 and we have 8 gradients, 12 % 8 = 4.
-  // it consistently maps any ID to a valid array index without breaking.
   const gradientClass = GRADIENTS[user.id % GRADIENTS.length];
+
+  const handleGetInTouch = () => {
+    const randomMsg =
+      FUNNY_MESSAGES[Math.floor(Math.random() * FUNNY_MESSAGES.length)];
+
+    toast(randomMsg, {
+      style: {
+        background: "var(--card)",
+        color: "var(--foreground)",
+        border: "1px solid var(--border)",
+        borderRadius: "1rem",
+      },
+    });
+  };
 
   return (
     <div className="w-full max-w-80 bg-card rounded-[2rem] shadow-xl border border-border relative overflow-hidden">
@@ -56,7 +92,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
 
       <div className="bg-muted/50 rounded-2xl p-4 mx-4 mb-4 flex items-center border border-border">
         <div className="flex-1 flex flex-col items-center">
-          <span className="font-bold text-foreground text-md">5.0</span>
+          <span className="font-bold text-foreground text-sm">5.0</span>
           <span className="text-[10px] text-muted-foreground font-medium">
             Rating
           </span>
@@ -65,7 +101,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
         <div className="w-px h-8 bg-border"></div>
 
         <div className="flex-1 flex flex-col items-center">
-          <span className="font-bold text-foreground text-md">{user.age}</span>
+          <span className="font-bold text-foreground text-sm">{user.age}</span>
           <span className="text-[10px] text-muted-foreground font-medium">
             Years
           </span>
@@ -74,7 +110,7 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
         <div className="w-px h-8 bg-border"></div>
 
         <div className="flex-1 flex flex-col items-center">
-          <span className="font-bold text-foreground text-md">
+          <span className="font-bold text-foreground text-sm">
             {Math.round(user.height)}
           </span>
           <span className="text-[10px] text-muted-foreground font-medium">
@@ -83,7 +119,10 @@ export const UserDetails = ({ user }: { user: DummyUser }) => {
         </div>
       </div>
 
-      <Button className="w-full rounded-[2rem] h-14 font-medium text-[15px] shadow-md">
+      <Button
+        onClick={handleGetInTouch}
+        className="w-full rounded-[2rem] h-14 font-medium text-[15px] shadow-md"
+      >
         Get In Touch
       </Button>
     </div>
